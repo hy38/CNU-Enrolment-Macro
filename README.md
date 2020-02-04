@@ -1,6 +1,6 @@
 # CNU-Enrolment-Macro
 
-## Things to install
+## 0. Things to install
 
 (개발환경 : Windows 10, Python 3.7.0)
 
@@ -26,15 +26,15 @@ pip install pyautogui
 
 ex) pip3 install Pillow
 
-## Setting Variables
+## 1. Setting Variables
 
 CNU_Macro.py 파일 안의 변수 개인에 맞게끔 수정
 
-## Run CNU_Macro.py
+## 2. Run CNU_Macro.py
 
 (실행 후 크롬을 foreground process로 바꾸기)
 
-### THINGS TO KNOW
+## 3. THINGS TO KNOW
 
 - 프로그램 사용으로 일어나는 모든 책임은 사용자에게 있습니다.
 

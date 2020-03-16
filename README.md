@@ -10,7 +10,6 @@ pip install pyautogui
 pip install opencv-python
 pip install numpy
 pip install python3_xlib
-pip install pyautogui
 
 pip3에 python3가깔려있다면 pip -> pip3로 변경 후 install
 ex)pip3 install Pillow

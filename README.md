@@ -1,4 +1,4 @@
-# Product Name
+# CNU-Enrolment-Macro
 > Macro helping CNU Enrolment
 
 This python program helps you to enrol subjects you want to learn in CNU, especially when you have failed the 1st enrolment.

@@ -37,6 +37,10 @@ pip3 install numpy
 pip3 install python3_xlib
 ```
 
+[Tesseract-OCR install Link](https://tesseract-ocr.github.io/tessdoc/4.0-with-LSTM.html#400-alpha-for-windows) You should install Tesseract to read numbers in image.
+
+initialize path in Windows follow the [link]((https://joyhong.tistory.com/79))
+
 ## Instructions
 
 ### 1. Modify Variables
@@ -65,7 +69,7 @@ _For more examples and usage, please refer to the [Wiki](https://github.com/hy38
 ## Release History
 
 * 0.0.1
-    * First Edition with hardcoded cordinates.
+    * First Edition with hardcoded coordinates.
 
 ## Meta
 

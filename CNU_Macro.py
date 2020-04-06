@@ -15,8 +15,8 @@ import pyautogui
 # Line 44 : parameters of imagesearcharea() -> 4th, 5th parameter
 # #===========================
 
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-time.sleep(2)
+# pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+# time.sleep(1)
 
 # #=== How does this Work? ===#
 # #=== FOLLOWING 6 STEPS =====#
@@ -31,32 +31,34 @@ time.sleep(2)
 # +) THe developer is not responsible for any disadvantages that may result from using this program.
 # #===========================#
 
-while True:
+pX = 0 # x-coordinate of the "신청" button
+pY = 0 # y-coordinate of the "신청" button
+def macro(pX, pY) :
     # STEP 1:
-    pyautogui.click(280, 540)
+    pyautogui.click(pX, pY)
 
-    time.sleep(0.5)
+    # time.sleep(0.05)
 
     # STEP 2:
-    accur = 0.7
+    accur = 0.9
     while True:
         #   Searching from the whole SCREEN(default : (1920, 1200)
-        pos = imagesearcharea("MacroProtectionPopup.png", 0, 0, 1920, 1200, accur, None)
+        pos = imagesearcharea("MacroProtectionPopup.png", 0, 0, 1920, 1080, accur, None)
         if pos[0] != -1:
             print("position : ", pos[0], pos[1])
             pyautogui.moveTo(pos[0], pos[1])
             break;
         else:
             print("image not found")
-            accur -= 0.05
-    time.sleep(0.3)
+            # accur -= 0.05
+    time.sleep(0.1)
 
     # STEP 3:
     # numBox cord : (x1, y1) ~ (x1 + width, y1 + height)
-    numCodeX = pos[0] + 140
-    numCodeY = pos[1] + 37
-    width = 150
-    height = 50
+    numCodeX = pos[0] + 128
+    numCodeY = pos[1] + 35
+    width = 75
+    height = 35
     ImageGrab.grab(bbox=(numCodeX, numCodeY, numCodeX + width, numCodeY + height)).save("capture.png", "png")
 
     # STEP 4, 5:
@@ -65,9 +67,12 @@ while True:
 
     # STEP 6:
     # click the empty box (Not neccessary)
+
+
     emptyX = numCodeX + 25
     emptyY = numCodeY + 70
     pyautogui.click(emptyX, emptyY)
+
 
     # PRINT THE NUM CODE !
     pyautogui.keyDown('ctrl')
@@ -78,7 +83,8 @@ while True:
     pyautogui.press('enter')
     time.sleep(1)
     pyautogui.press('enter')
-    time.sleep(3)
+    time.sleep(1)
+
 
     ### IMAGE DIFFERENCE FINDING(NOT A GOOD WAY)
 
@@ -92,3 +98,5 @@ while True:
     #         break;
     # ImageChops.screen(ImageChops.invert(im.crop(bbox)), diff.crop(bbox)).show()
     # ImageChops.screen(diff.crop(bbox).show())
+
+macro(270, 648)

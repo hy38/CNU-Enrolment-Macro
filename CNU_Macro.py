@@ -40,63 +40,51 @@ def macro(pX, pY) :
     # time.sleep(0.05)
 
     # STEP 2:
-    accur = 0.9
+    accur = 1
     while True:
         #   Searching from the whole SCREEN(default : (1920, 1200)
         pos = imagesearcharea("MacroProtectionPopup.png", 0, 0, 1920, 1080, accur, None)
         if pos[0] != -1:
             print("position : ", pos[0], pos[1])
             pyautogui.moveTo(pos[0], pos[1])
-            break;
+            break
         else:
             print("image not found")
-            # accur -= 0.05
+            accur -= 0.05
     time.sleep(0.1)
 
     # STEP 3:
     # numBox cord : (x1, y1) ~ (x1 + width, y1 + height)
-    numCodeX = pos[0] + 128
-    numCodeY = pos[1] + 35
-    width = 75
-    height = 35
+    numCodeX = pos[0] + 80
+    numCodeY = pos[1] + 70
+    width = 50
+    height = 20
     ImageGrab.grab(bbox=(numCodeX, numCodeY, numCodeX + width, numCodeY + height)).save("capture.png", "png")
 
     # STEP 4, 5:
     txt = pytesseract.image_to_string(Image.open('capture.png'))
+    print(txt)
     pyperclip.copy(txt)
 
     # STEP 6:
     # click the empty box (Not neccessary)
 
 
-    emptyX = numCodeX + 25
-    emptyY = numCodeY + 70
-    pyautogui.click(emptyX, emptyY)
+    # emptyX = numCodeX + 25
+    # emptyY = numCodeY + 70
+    # pyautogui.click(emptyX, emptyY)
+# 수강신청 리뉴얼 후 클릭 안 눌러도 알아서 커서가 위치해있음
 
 
     # PRINT THE NUM CODE !
-    pyautogui.keyDown('ctrl')
-    pyautogui.keyDown('v')
-    #    time.sleep(0.2)
-    pyautogui.keyUp('ctrl')
-    pyautogui.keyUp('v')
-    pyautogui.press('enter')
+    ## ctrl v is not allowed in new version of enrollment program
+    time.sleep(1)
+    pyautogui.typewrite(txt , interval=0.1)
     time.sleep(1)
     pyautogui.press('enter')
     time.sleep(1)
+    pyautogui.press('enter')
+    time.sleep(1)
 
-
-    ### IMAGE DIFFERENCE FINDING(NOT A GOOD WAY)
-
-    # from PIL import ImageChops  # $ pip install pillow
-    # from pyscreenshot import grab # $ pip install pyscreenshot
-
-    # while True:
-    #     diff = ImageChops.difference(grab(), im)
-    #     bbox = diff.getbbox()
-    #     if bbox is not None:
-    #         break;
-    # ImageChops.screen(ImageChops.invert(im.crop(bbox)), diff.crop(bbox)).show()
-    # ImageChops.screen(diff.crop(bbox).show())
-
-macro(270, 648)
+while True:
+    macro(461, 296)
